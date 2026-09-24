@@ -4,7 +4,7 @@
 
 Supervisor: Prof. Qaiser Riaz
 
-> 🚧 **The code is being uploaded.** The training notebooks, cross-validation scripts and evaluation figures will be added here soon.
+> **Note:** The code is being uploaded. The training notebooks, cross-validation scripts and evaluation figures will be added here soon.
 
 ## Overview
 
@@ -15,44 +15,42 @@ Parkinson's disease (PD) is often confused with other movement disorders that lo
 
 ## Method
 
-| Stage | Details |
-|---|---|
-| Dataset | PADS: Parkinson's Disease Smartwatch Dataset (PhysioNet) |
-| Input | Windows of tri-axial acceleration, 200 time steps × 3 axes (~288K windows) |
-| Feature extractor | Conv (64) → Dropout → Conv (64) → Dropout → Max-Pool |
-| Temporal model | LSTM (64 units) |
-| Attention | 4-head self-attention over the LSTM sequence |
-| Heads | Shared Dense (64) → two softmax heads: **10 activities** and **3 disease classes** |
-| Evaluation | **Subject-level k-fold cross-validation** (no subject in both train and test), per-wrist experiments |
-| Explainability | XAI attribution maps over the input signal |
-
-**Activities:** CrossArms, DrinkGlas, Entrainment, HoldWeight, LiftHold, PointFinger, Relaxed, StretchHold, TouchIndex, TouchNose
-**Disease labels:** 0 = Healthy, 1 = Parkinson's Disease, 2 = Differential Disorders
+- **Dataset:** PADS, Parkinson's Disease Smartwatch Dataset (PhysioNet)
+- **Input:** windows of tri-axial acceleration, 200 time steps x 3 axes (about 288K windows)
+- **Feature extractor:** two convolutional layers (64 filters each) with dropout, followed by max pooling
+- **Temporal model:** LSTM with 64 units
+- **Attention:** 4-head self-attention over the LSTM sequence
+- **Output heads:** shared dense layer (64 units) feeding two softmax heads, one for 10 activities and one for 3 disease classes
+- **Evaluation:** subject-level k-fold cross-validation (no subject appears in both training and test data), with per-wrist experiments
+- **Explainability:** XAI attribution maps over the input signal
+- **Activities:** CrossArms, DrinkGlas, Entrainment, HoldWeight, LiftHold, PointFinger, Relaxed, StretchHold, TouchIndex, TouchNose
+- **Disease labels:** 0 = Healthy, 1 = Parkinson's Disease, 2 = Differential Disorders
 
 ## Results (from the accompanying manuscript)
 
-- **~94%** accuracy on ten-class fine-motor activity recognition
-- **~91%** accuracy on the three-class HC / PD / DD task, despite class imbalance
+- About 94% accuracy on ten-class fine-motor activity recognition
+- About 91% accuracy on the three-class HC / PD / DD task, despite class imbalance
 
-## Planned repository structure
+## Planned Repository Structure
 
-```
-├── notebooks/        # Colab & Kaggle training notebooks
-├── src/              # data loading, windowing, model, training loop
-├── kfold/            # subject-level k-fold cross-validation (resume-capable)
-├── results/          # confusion matrices, per-fold metrics, XAI figures
-└── requirements.txt
-```
+- notebooks: Colab and Kaggle training notebooks
+- src: data loading, windowing, model and training loop
+- kfold: subject-level k-fold cross-validation (resume-capable)
+- results: confusion matrices, per-fold metrics and XAI figures
+- requirements.txt
 
-## Tech stack
+## Tech Stack
 
-Python · TensorFlow / Keras · NumPy · scikit-learn · Matplotlib · Google Colab / Kaggle
+- Python, TensorFlow, Keras
+- NumPy, scikit-learn, Matplotlib
+- Google Colab, Kaggle
 
-## Related publication
+## Related Publication
 
-*Differentiating Parkinson's Disease from Similar Neurological Disorders via Seated Fine Motor Activities and Wearable Inertial Sensors.* T. Mehmood et al. (manuscript in preparation for IEEE Sensors Journal)
+- Differentiating Parkinson's Disease from Similar Neurological Disorders via Seated Fine Motor Activities and Wearable Inertial Sensors. T. Mehmood et al. Manuscript in preparation for IEEE Sensors Journal.
 
 ## Author
 
-**Engr. Tahir Mehmood**: MS CS @ NUST SEECS · BS Electrical Engineering @ NUST
-[LinkedIn](https://www.linkedin.com/in/tahir-mehmood-596131209/) · tahirmehmoodrehmani@gmail.com
+- Engr. Tahir Mehmood, MS Computer Science, NUST SEECS
+- LinkedIn: [linkedin.com/in/tahir-mehmood-596131209](https://www.linkedin.com/in/tahir-mehmood-596131209/)
+- Email: tahirmehmoodrehmani@gmail.com
