@@ -1,6 +1,7 @@
 # Parkinson's Differential Diagnosis with a Multi-Task CNN-LSTM-Attention Network
 
 **MS Computer Science thesis, School of Electrical Engineering and Computer Science (SEECS), NUST Islamabad**
+
 Supervisor: Prof. Qaiser Riaz
 
 > 🚧 **The code is being uploaded.** The training notebooks, cross-validation scripts and evaluation figures will be added here soon.
